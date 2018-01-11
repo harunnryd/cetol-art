@@ -1,0 +1,46 @@
+<%= form_for(course, url: url_for(action: action), html: {multipart: true, class: 'col s12'}, as: :course) do |f| %>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.text_field(:title, class: 'validate', placeholder: 'ruby on rails') %>
+      <%= f.label(:title) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.text_area(:desc, class: 'validate', placeholder: 'ruby on rails', class: 'materialize-textarea') %>
+      <%= f.label(:desc) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s12">
+      <%= f.number_field(:price, class: 'validate', step: 1000) %>
+      <%= f.label(:price) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="file-field input-field col s12">
+      <div class="btn">
+      <span>photo</span>
+        <%= f.file_field :photo %>
+      </div>
+      <input class="file-path validate" type="text"/>
+    </div>
+
+    <div class="col s2">
+      <div class="card-panel grey lighten-5">
+        <div class="row valign-wrapper">
+          <%= image_tag(course.photo_url, class: 'circle responsive-img') if course.photo.present? %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="btn light-blue darken-1" name="action" type="submit">Submit
+    <i class="material-icons right">send</i>
+  </button>
+<% end %>

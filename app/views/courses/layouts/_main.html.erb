@@ -1,0 +1,14 @@
+<% courses.each do |c| %>
+    <div class="col s12 m3">
+      <div class="card">
+        <div class="card-image">
+          <img class="img-asu" src="<%= image_url(c.photo.thumb.url) %>">
+          <a href="<%= course_path(c) %>" class="btn-floating pulse halfway-fab waves-effect waves-light blue"><i class="material-icons">school</i></a>
+        </div>
+        <div class="card-action">
+          <p class="truncate">Belajar <%= c.title.titleize %></p>
+          <p><%= c.price.zero? ? 'Gratis!' : '' %></p>
+        </div>
+      </div>
+    </div>
+<% end %>

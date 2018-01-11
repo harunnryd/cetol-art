@@ -1,0 +1,42 @@
+<%= render("courses/layouts/parallax-show") %>
+<div class="section">
+  <div class="row">
+    <div class="col s10 offset-s1 z-depth-4">
+      <div class="col s12 m4">
+      <div class="col s12">
+        <h5>Deskripsi : </h5>
+        <p><%= @course.desc %></p>
+      </div>
+        <% if false %>
+        <div class="collection">
+          <h5 class="collection-header center">Daftar</h5>
+          <div class="divider"></div>
+          <h1 class="header center">:'(</h1>
+        </div>
+        <% else %>
+        <div class="collection">
+          <h5 class="collection-header center">Daftar</h5>
+          <div class="divider"></div>
+          <a href="#!" class="collection-item"><span class="badge">4:25</span>#1 - Setup Project</a>
+          <a href="#!" class="collection-item"><span class="badge">4:25</span>#1 - Setup Project</a>
+          <a href="#!" class="collection-item"><span class="badge">4:25</span>#1 - Setup Project</a>
+          <a href="#!" class="collection-item"><span class="badge">4:25</span>#1 - Setup Project</a>
+          <a href="#!" class="collection-item"><span class="badge">4:25</span>#1 - Setup Project</a>
+          <a href="#!" class="collection-item"><span class="badge">4:25</span>#1 - Setup Project</a>
+          <a href="#!" class="collection-item"><span class="badge">4:25</span>#1 - Setup Project</a>
+          <a href="#!" class="collection-item"><span class="badge">4:25</span>#1 - Setup Project</a>
+          <a href="#!" class="collection-item"><span class="badge">4:25</span>#1 - Setup Project</a>
+          <a href="#!" class="collection-item"><span class="badge">4:25</span>#1 - Setup Project</a>
+          <a href="#!" class="collection-item"><span class="badge">4:25</span>#1 - Setup Project</a>
+          <a href="#!" class="collection-item"><span class="badge">4:25</span>#1 - Setup Project</a>
+        </div>
+        <% end %>
+      </div>
+      <div class="col s12 m8">
+        <%= render("layouts/comment", course: @course) %>
+      </div>
+    </div>
+
+
+  </div>
+</div>

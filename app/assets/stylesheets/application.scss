@@ -1,0 +1,32 @@
+@import "materialize";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+.parallax-container {
+  height: 650px;
+}
+
+#parallax-show {
+  height: 250px;
+}
+
+html {
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.card-image{
+  height:200px;
+}
+
+.img-asu {
+  padding: 50px;
+}

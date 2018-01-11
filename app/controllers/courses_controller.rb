@@ -15,6 +15,13 @@ class CoursesController < ApplicationController
     CourseService::Create.(course_params, success: success, failure: failure)
   end
 
+  def update
+    success = -> (course) { redirect_to(course_path(course), notice: 'success') }
+    failure = -> (course) { @course = course; render(:edit); puts course.errors.full_messages }
+
+    CourseService::Update.(course_params, success: success, failure: failure)
+  end
+
   def show
   end
 
