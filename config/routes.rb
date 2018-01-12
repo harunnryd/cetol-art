@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :courses
+  resources :courses, except: :index
   root 'courses#index'
 end
