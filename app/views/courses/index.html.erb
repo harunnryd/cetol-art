@@ -1,8 +1,12 @@
-<%= render('courses/layouts/buttonfly') %>
+<%# render('courses/layouts/buttonfly') %>
 
-<%= render('courses/layouts/parallax') %>
+<%# render('courses/layouts/parallax') %>
 
 <div class="section container">
+  <div class="row center">
+    <h5 class="header">Belajar Apa Hari Ini?</h5>
+    <div class="divider"></div>
+  </div>
   <div class="row center-cols center-align">
     <%= render('courses/layouts/main', courses: @courses) %>
   </div>

@@ -1,4 +1,4 @@
-<h5 class="header center">Bingung? Diskusi aja disini</h5>
+<h5 class="header center">Diskusi</h5>
 <div class="divider"></div>
 <div id="disqus_thread"></div>
 <script>
@@ -10,9 +10,9 @@
 var disqus_config = function () {
   s.src = 'https://cetol-art.disqus.com/embed.js';
   this.shortname = "Cetol Art";
-  this.page.url = "<%= url_for(course) %>";
-  this.page.identifier = 'Course-<%= course.id %>';
-  this.page.title = '<%= course.title %>';
+  this.page.url = "<%= url_for(model) %>";
+  this.page.identifier = '<%= model.to_s %>-<%= model.id %>';
+  this.page.title = '<%= model.title %>';
 };
 
 (function() { // DON'T EDIT BELOW THIS LINE

@@ -29,16 +29,16 @@ class EpisodesController < ApplicationController
   end
 
   def destroy
-    @episode.destroy
-    redirect_to(episodes_path)
+    redirect_to(episodes_path) if @episode.destroy
   end
 
   private
     def episode_params
-      params.require(:episode).permit(:title, :desc, :price, :photo)
+      params.require(:episode).permit(:title, :url, :duration, :course_id)
     end
 
     def set_episode
-      @episode = episode.friendly.find(params[:id])
+      @episode = Episode.friendly.find(params[:id])
+      @course = @episode.course
     end
 end

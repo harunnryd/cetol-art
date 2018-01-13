@@ -1,0 +1,19 @@
+<%= render("parallax-show", episode: @episode) %>
+<div class="section">
+<div class="row">
+  <div class="col m10 offset-m1 z-depth-1">
+  <div class="col m4">
+    <div class="collection">
+      <h6 class="collection-header center">Daftar</h6>
+      <div class="divider"></div>
+      <% @course.episodes.each do |e| %>
+        <a href="<%= episode_path(e) %>" class="collection-item text-small"><span class="red new badge"></span><%= e.title.titleize %></a>
+      <% end %>
+    </div>
+  </div>
+  <div class="col m8">
+    <%= render("layouts/comment", model: @episode) %>
+  </div>
+  </div>
+</div>
+</div>
