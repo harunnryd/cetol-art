@@ -3,7 +3,34 @@
     <h5 class="header">"<%= @course.title.titleize %>"</h5>
     <div class="divider"></div>
   </div>
-  <div class="row">
+  <div class="row center">
+    <% if @course.episodes.empty? %>
+
+<!--   <div class="row">
+    <div class="col s12">
+      <p>Subscribe!</p>
+      <p>Buat saya bertambah bersemangat share video <%= @course.title %> dan</p>
+      <p>segera dapatkan informasi mengenai screencast yang tersedia :)</p>
+    </div>
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6 offset-m3">
+          <input placeholder="test@gmail.com" id="first_name2" type="text" class="validate">
+          <label class="active" for="first_name2">Email Subscribe</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 center">
+          <button class="btn light-blue darken-1" name="action" type="submit">Subscribe!
+            <i class="material-icons right">favorite</i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div> -->
+
+
+    <% else %>
     <ul class="collection z-depth-2">
     <% @course.episodes.each do |ep| %>
       <li class="collection-item avatar">
@@ -16,6 +43,7 @@
         <a href="" class="waves-effect waves-teal"><i class="material-icons z-depth-1">edit</i></a> |
         <a href="" class="waves-effect waves-read"><i class="material-icons z-depth-1">delete_sweep</i></a>
       </li>
+    <% end %>
     <% end %>
     </ul>
   </div>

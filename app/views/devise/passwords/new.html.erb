@@ -1,0 +1,34 @@
+<div class="section container">
+  <div class="row">
+    <div class="col s12 m6 offset-m3 z-depth-1">
+    <div class="col s12 m10 offset-m1">
+      <h5 class="title center">"Forgot your password?"</h5>
+    </div>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'col s12' }) do |f| %>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.label :email, class: 'active' %>
+          <em><%= devise_resource.errors.full_messages_for(:email).empty? ? '' : "#{devise_resource.errors.full_messages_for(:email).first}" %></em>
+        </div>
+      </div>
+
+
+      <div class="row center">
+        <div class="col s12">
+          <button class="btn waves-effect waves-read light-blue darken-1" name="action" type="submit">Send Me!
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    <% end %>
+
+    </div>
+  </div>
+</div>

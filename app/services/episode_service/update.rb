@@ -1,7 +1,7 @@
 module EpisodeService
   class Update
-    def self.call(episode, attrs, callbacks)
-      new(episode, attrs, callbacks).call
+    def self.call(user, episode, attrs, callbacks)
+      new(user, episode, attrs, callbacks).call
     end
 
     def call
@@ -10,6 +10,7 @@ module EpisodeService
         return callbacks[:failure].call(form)
       else
         obj = episode
+        obj.user = user
         obj.title = form.title
         obj.url = form.url
         obj.duration = form.duration
@@ -20,8 +21,9 @@ module EpisodeService
     end
 
     private
-      attr_reader(:episode, :attrs, :callbacks)
-      def initialize(episode, attrs, callbacks)
+      attr_reader(:user, :episode, :attrs, :callbacks)
+      def initialize(user, episode, attrs, callbacks)
+        @user = user
         @episode = episode
         @attrs = attrs
         @callbacks = callbacks

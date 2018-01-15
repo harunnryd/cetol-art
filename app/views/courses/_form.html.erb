@@ -3,45 +3,52 @@
   <div class="row">
     <div class="input-field col s12">
       <%= f.text_field(:title, class: 'validate', placeholder: 'ruby on rails') %>
-      <%= f.label(:title) %>
+      <%= f.label(:title, class: 'active') %>
+      <%= course.errors.full_messages_for(:title).empty? ? '' : course.errors.full_messages_for(:title).first %>
     </div>
   </div>
 
   <div class="row">
     <div class="input-field col s12">
       <%= f.text_area(:desc, class: 'validate', placeholder: 'ruby on rails', class: 'materialize-textarea') %>
-      <%= f.label(:desc) %>
+      <%= f.label(:desc, class: 'active') %>
+      <%= course.errors.full_messages_for(:desc).empty? ? '' : course.errors.full_messages_for(:desc).first %>
     </div>
   </div>
 
   <div class="row">
     <div class="input-field col s12">
       <%= f.number_field(:price, class: 'validate', step: 1000) %>
-      <%= f.label(:price) %>
+      <%= f.label(:price, class: 'active') %>
+      <%= course.errors.full_messages_for(:price).empty? ? '' : course.errors.full_messages_for(:price).first %>
     </div>
   </div>
 
   <div class="row">
     <div class="file-field input-field col s12">
-      <div class="btn">
+      <div class="btn light-blue darken-1">
       <span>photo</span>
         <%= f.file_field :photo %>
       </div>
       <input class="file-path validate" type="text"/>
+      <%= course.errors.full_messages_for(:photo).empty? ? '' : course.errors.full_messages_for(:photo).first %>
     </div>
     <% if course.photo.present? %>
-    <div class="col s2">
-      <div class="card-panel grey lighten-5">
+    <div class="col m2 offset-m5">
+      <div class="">
         <div class="row valign-wrapper">
-          <%= image_tag(course.photo_url, class: 'circle responsive-img') %>
+          <%= image_tag(course.photo_url, class: 'circle responsive-img z-depth-2') %>
         </div>
       </div>
     </div>
     <% end %>
-
   </div>
 
-  <button class="btn light-blue darken-1" name="action" type="submit">Submit
-    <i class="material-icons right">send</i>
-  </button>
+  <div class="row">
+    <div class="col s12 center">
+      <button class="btn light-blue darken-1" name="action" type="submit">Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
+  </div>
 <% end %>

@@ -10,25 +10,29 @@
   <div class="row">
     <div class="input-field col s12">
       <%= f.text_field(:title, class: 'validate', placeholder: 'Setup Project') %>
-      <%= f.label(:title) %>
+      <%= f.label(:title, class: 'active') %>
     </div>
   </div>
 
   <div class="row">
     <div class="input-field col s12">
       <%= f.text_field(:url, class: 'validate', placeholder: 'kyFcSOdBlP4') %>
-      <%= f.label(:url) %>
+      <%= f.label(:url, class: 'active') %>
     </div>
   </div>
 
   <div class="row">
     <div class="input-field col s12">
       <%= f.text_field(:duration, class: 'validate', placeholder: '4:25') %>
-      <%= f.label(:duration) %>
+      <%= f.label(:duration, class: 'active') %>
     </div>
   </div>
 
-  <button class="btn light-blue darken-1" name="action" type="submit">Submit
-    <i class="material-icons right">send</i>
-  </button>
+  <div class="row">
+    <div class="col s12 center">
+      <button class="btn light-blue darken-1" name="action" type="submit">Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
+  </div>
 <% end %>

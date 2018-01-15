@@ -1,36 +1,40 @@
 class CoursesController < ApplicationController
+  before_action(:authenticate_user!, except: %i(index show))
   before_action(:set_course, only: %i(show edit update destroy))
+
   def index
     @courses = Course.all
   end
 
   def new
+    authorize(Course)
     @course = Courses::Create.new()
   end
 
   def create
     success = -> (course) { redirect_to(course_path(course), notice: 'success') }
     failure = -> (course) { @course = course; render(:new); puts course.errors.full_messages }
-
-    CourseService::Create.(course_params, success: success, failure: failure)
+    authorize(Course)
+    CourseService::Create.(current_user, course_params, success: success, failure: failure)
   end
 
   def update
     success = -> (course) { redirect_to(course_path(course), notice: 'success') }
     failure = -> (course) { @course = course; render(:edit); puts course.errors.full_messages }
 
-    CourseService::Update.(@course, course_params, success: success, failure: failure)
+    CourseService::Update.(current_user, @course, course_params, success: success, failure: failure)
   end
 
   def show
   end
 
   def edit
+    authorize(@course)
   end
 
   def destroy
-    @course.destroy
-    redirect_to(courses_path)
+    authorize(@course)
+    redirect_to(courses_path) if @course.destroy
   end
 
   private

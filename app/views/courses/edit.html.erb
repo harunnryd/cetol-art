@@ -1,7 +1,9 @@
 <div class="section container">
   <div class="row">
-    <h5>Edit Course</h5>
-    <%= render("form", course: @course, action: :update) %>
+    <div class="col s12 m6 offset-m3 z-depth-1">
+      <h5 class="header center">Edit Course</h5>
+      <%= render("form", course: @course, action: :update) %>
+    </div>
   </div>
 </div>
 

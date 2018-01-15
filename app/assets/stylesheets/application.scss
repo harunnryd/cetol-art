@@ -1,9 +1,9 @@
-@import "materialize";
 @import "course";
+@import "materialize";
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 .parallax-container {
-  height: 400px;
+  height: 410px;
 }
 
 #parallax-show {
@@ -36,7 +36,20 @@ main {
   font-size: 10px;
 }
 
+.text-error {
+  font-size: 150px;
+}
+
+.text-error-small {
+  font-size: 40px;
+}
+
 .text-detail {
   font-size: 12px;
 }
 
+.parallax img {
+  display: inherit !important;
+}
+
+.navbar-fixed { z-index: 9999; }

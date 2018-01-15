@@ -5,10 +5,14 @@
       <h5 class="header col s12 m12 light">Belajar Apapun Lewat Screencast Bareng Kita! </h5>
       <h6 class="header col s12 m12 light">Kuy Gausah Banyak Mikir, Gabung Sekarang.. </h6>
       <div class="col col-parallax">
-        <a class="btn-large z-depth-3 waves-effect waves-light blue darken-1" href="/parts"><i class="material-icons left">directions_run</i>Kuy Gabung!</a>
+        <% if user_signed_in? %>
+        <a class="btn-large z-depth-3 waves-effect waves-light blue darken-1" href="<%= episodes_path %>"><i class="material-icons left">play_arrow</i>Lihat Episode</a>
+        <% else %>
+        <a class="btn-large z-depth-3 waves-effect waves-light blue darken-1" href="<%= new_user_registration_path %>"><i class="material-icons left">directions_run</i>Kuy Gabung!</a>
+        <% end %>
       </div>
       <div class="col col-parallax">
-        <a class="btn-large z-depth-3 waves-effect waves-light blue darken-1" href="/parts"><i class="material-icons left">ondemand_video</i> Lihat Course</a>
+        <a class="btn-large z-depth-3 waves-effect waves-light blue darken-1" href="<%= courses_path %>"><i class="material-icons left">ondemand_video</i> Lihat Course</a>
       </div>
     </div>
 </div>

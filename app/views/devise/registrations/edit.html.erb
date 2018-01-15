@@ -1,0 +1,71 @@
+<div class="section container">
+  <div class="row">
+    <div class="col s12 m8 offset-m2 z-depth-1">
+      <div class="col s12 m10 offset-m1">
+        <h5 class="title center">"Edit <%= resource_name.to_s.humanize %>"</h5>
+      </div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'col s12' }) do |f| %>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <%= f.label :email, class: 'active' %>
+            <em><%= devise_resource.errors.full_messages_for(:email).empty? ? '' : "#{devise_resource.errors.full_messages_for(:email).first}" %></em>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.password_field :password, autocomplete: "off" %>
+            <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+            <em><%= devise_resource.errors.full_messages_for(:password).empty? ? '' : "#{devise_resource.errors.full_messages_for(:password).first}" %></em>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            <%= f.label :password_confirmation %>
+            <em><%= devise_resource.errors.full_messages_for(:password_confirmation).empty? ? '' : "#{devise_resource.errors.full_messages_for(:password_confirmation).first}" %></em>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <%= f.password_field :current_password, autocomplete: "off" %>
+            <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+            <em><%= devise_resource.errors.full_messages_for(:current_password).empty? ? '' : "#{devise_resource.errors.full_messages_for(:current_password).first}" %></em>
+          </div>
+        </div>
+
+        <div class="row center">
+          <div class="row center">
+            <div class="col s12">
+              <button class="btn waves-effect waves-read light-blue darken-1" name="action" type="submit">Update
+              </button>
+            </div>
+          </div>
+      <% end %>
+
+      <div class="col s12 m10 offset-m1">
+        <h5 class="title center">"Delete Account?"</h5>
+        <div class="col s12 m4 offset-m4">
+          <a href="<%= registration_path(resource_name) %>" data-confirm="Hapus Akun?" data-remote="true" rel="nofollow" data-method="delete""><i class="material-icons">delete</i></a>
+        </div>
+        <%#= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn' %>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <%= link_to "Back", :back %>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>

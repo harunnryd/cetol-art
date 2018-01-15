@@ -2,7 +2,7 @@
     <div class="col s12 m3">
       <div class="card">
         <div class="card-image">
-          <img class="img-asu" src="<%= image_url(c.photo.thumb.url) %>">
+          <img class="img-asu" src="<%= c.photo.present? ? image_url(c.photo.thumb.url) : image_url('rails_logo.png')  %>">
           <div class="row">
             <div class="col s6">
               <a href="<%= course_path(c) %>" data-confirm="Hapus?" title="Hapus <%= c.title %>" data-remote="true" rel="nofollow" data-method="delete" class="left btn-floating pulse halfway-fab waves-effect waves-light red"><i class="material-icons">delete</i></a>
@@ -13,8 +13,8 @@
           </div>
         </div>
         <div class="card-action">
-          <p class="truncate">Belajar <%= c.title.titleize %></p>
-          <p><%= c.price.zero? ? 'Gratis!' : '' %></p>
+          <p class="truncate text-medium"><%= c.title.titleize %></p>
+          <p class="text-medium"><%= c.price.zero? ? 'Gratis!' : number_to_currency(c.price, unit: "Rp. ", separator: ",", delimiter: ".") %></p>
         </div>
       </div>
     </div>
