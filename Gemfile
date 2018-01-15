@@ -10,7 +10,6 @@ end
 gem 'rails', '~> 5.0.6'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.5', group: :development
-gem 'pg', group: :production
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -50,6 +49,11 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.7'
   gem 'database_cleaner'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :development do
