@@ -48,7 +48,5 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
   database: cetol-art_production
-  username: cetol-art
-  password: <%= ENV['CETOL-ART_DATABASE_PASSWORD'] %>
