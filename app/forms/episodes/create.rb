@@ -9,7 +9,7 @@ module Episodes
 
     def self.method_missing(name, *args)
       result =  "undefined method :#{name}"
-      result.concat(" ", "with argument (#{args.join(',')})") if args.present?
+      result.concat(" with argument (#{args.join(',')})") if args.present?
       result
     end
 
