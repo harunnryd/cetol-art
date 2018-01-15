@@ -3,17 +3,22 @@ class EpisodesController < ApplicationController
   before_action(:set_episode, only: %i(show edit update destroy))
 
   def index
-    @episodes = Episode.all
+    @episodes = Episode.all.paginate(page: params[:page], per_page: 15)
   end
 
   def new
     authorize(Episode)
     @episode = Episodes::Create.new()
+    @course_list = Course.where(user_id: current_user.id)
   end
 
   def create
     success = -> (episode) { redirect_to(episode_path(episode), notice: 'success') }
-    failure = -> (episode) { @episode = episode; render(:new); puts episode.errors.full_messages }
+    failure = -> (episode) do
+      @episode = episode
+      @course_list = Course.where(user_id: current_user.id)
+      render(:new)
+    end
 
     authorize(Episode)
     EpisodeService::Create.(current_user, episode_params, success: success, failure: failure)
@@ -21,7 +26,11 @@ class EpisodesController < ApplicationController
 
   def update
     success = -> (episode) { redirect_to(episode_path(episode), notice: 'success') }
-    failure = -> (episode) { @episode = episode; render(:edit); puts episode.errors.full_messages }
+    failure = -> (episode) do
+      @course_list = Course.where(user_id: current_user.id)
+      @episode = episode
+      render(:edit)
+    end
 
     authorize(@episode)
     EpisodeService::Update.(current_user, @episode, episode_params, success: success, failure: failure)
@@ -31,6 +40,7 @@ class EpisodesController < ApplicationController
   end
 
   def edit
+    @course_list = Course.where(user_id: current_user.id)
     authorize(@episode)
   end
 

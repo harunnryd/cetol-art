@@ -11,6 +11,8 @@ module EpisodeService
       else
         obj = episode
         obj.user = user
+        obj.course_id = form.course_id
+        obj.desc = form.desc
         obj.title = form.title
         obj.url = form.url
         obj.duration = form.duration

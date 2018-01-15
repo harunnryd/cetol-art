@@ -9,19 +9,21 @@ module EpisodeService
       if form.invalid?
         return callbacks[:failure].call(form)
       else
-        course = Episode.new
-        course.user = user
-        course.title = form.title
-        course.url = form.url
-        course.duration = form.duration
-        if course.save
-          return callbacks[:success].call(course)
+        episode = Episode.new
+        episode.user = user
+        episode.course_id = form.course_id
+        episode.desc = form.desc
+        episode.title = form.title
+        episode.url = form.url
+        episode.duration = form.duration
+        if episode.save
+          return callbacks[:success].call(episode)
         end
       end
     end
 
     private
-      attr_reader(:user, attrs, :callbacks)
+      attr_reader(:user, :attrs, :callbacks)
       def initialize(user, attrs, callbacks)
         @user = user
         @attrs = attrs

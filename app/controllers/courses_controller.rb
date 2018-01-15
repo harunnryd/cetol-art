@@ -13,19 +13,20 @@ class CoursesController < ApplicationController
 
   def create
     success = -> (course) { redirect_to(course_path(course), notice: 'success') }
-    failure = -> (course) { @course = course; render(:new); puts course.errors.full_messages }
+    failure = -> (course) { @course = course; render(:new) }
     authorize(Course)
     CourseService::Create.(current_user, course_params, success: success, failure: failure)
   end
 
   def update
     success = -> (course) { redirect_to(course_path(course), notice: 'success') }
-    failure = -> (course) { @course = course; render(:edit); puts course.errors.full_messages }
-
+    failure = -> (course) { @course = course; render(:edit) }
+    authorize(@course)
     CourseService::Update.(current_user, @course, course_params, success: success, failure: failure)
   end
 
   def show
+    @episodes = @course.episodes.paginate(page: params[:page], per_page: 15)
   end
 
   def edit

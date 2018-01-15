@@ -1,10 +1,14 @@
+<% if policy(@course).new? %>
+<%= render("layouts/button-new-fly", goto: new_episode_path) %>
+<% end %>
+
 <div class="section container">
   <div class="row center">
     <h5 class="header">"<%= @course.title.titleize %>"</h5>
     <div class="divider"></div>
   </div>
-  <div class="row center">
-    <% if @course.episodes.empty? %>
+  <div class="row">
+    <% if @episodes.empty? %>
 
 <!--   <div class="row">
     <div class="col s12">
@@ -32,7 +36,7 @@
 
     <% else %>
     <ul class="collection z-depth-2">
-    <% @course.episodes.each do |ep| %>
+      <% @episodes.each do |ep| %>
       <li class="collection-item avatar">
         <a href=""><i class="material-icons circle red z-depth-2">play_arrow</i></a>
         <span class="title"><i class="material-icons tiny left">local_cafe</i><a href="<%= episode_path(ep) %>"><%= ep.course.title.titleize %> - <%= ep.title.titleize %></a></span>
@@ -40,11 +44,18 @@
           #<%= ep.id %> | <%= ep.created_at.strftime('%d %b %Y') %>
         </p>
         <p class="text-detail">Pada episode ini, kita akan membuat sebuah Policy untuk hak akses sederhana</p>
-        <a href="" class="waves-effect waves-teal"><i class="material-icons z-depth-1">edit</i></a> |
-        <a href="" class="waves-effect waves-read"><i class="material-icons z-depth-1">delete_sweep</i></a>
+        <% if policy(ep).update? %>
+        <a href="<%= edit_episode_path(ep) %>" class="waves-effect waves-teal"><i class="material-icons z-depth-1">edit</i></a> |
+        <a href="<%= episode_path(ep) %>" data-confirm="Hapus?" title="Hapus <%= ep.title %>" data-remote="true" rel="nofollow" data-method="delete" class="waves-effect waves-read"><i class="material-icons z-depth-1">delete_sweep</i></a>
+        <% end %>
       </li>
-    <% end %>
+      <% end %>
     <% end %>
     </ul>
+    <div class="row center">
+      <div class="col s12">
+      <%= will_paginate @episodes, :renderer => Pagination %>
+      </div>
+    </div>
   </div>
 </div>

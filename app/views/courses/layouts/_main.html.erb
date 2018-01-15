@@ -4,10 +4,12 @@
         <div class="card-image">
           <img class="img-asu" src="<%= c.photo.present? ? image_url(c.photo.thumb.url) : image_url('rails_logo.png')  %>">
           <div class="row">
-            <div class="col s6">
+            <% if policy(c).edit? %>
+            <div class="col s6 m6">
               <a href="<%= course_path(c) %>" data-confirm="Hapus?" title="Hapus <%= c.title %>" data-remote="true" rel="nofollow" data-method="delete" class="left btn-floating pulse halfway-fab waves-effect waves-light red"><i class="material-icons">delete</i></a>
             </div>
-            <div class="col s6">
+            <% end %>
+            <div class="col s6 m6">
               <a href="<%= course_path(c) %>" class="btn-floating pulse halfway-fab waves-effect waves-light blue"><i class="material-icons">school</i></a>
             </div>
           </div>

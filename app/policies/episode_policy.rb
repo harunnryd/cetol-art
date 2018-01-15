@@ -7,14 +7,14 @@ class EpisodePolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin?
+    user.admin? if user
   end
 
   def update?
-    user.admin? and user.id == episode.user.id
+    user.admin? and user.id == episode.user_id if user
   end
 
   def destroy?
-    user.admin? and user.id == episode.user.id
+    user.admin? and user.id == episode.user_id if user
   end
 end

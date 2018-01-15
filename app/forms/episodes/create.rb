@@ -1,7 +1,7 @@
 module Episodes
   class Create < FormObject
     attr_reader(:attrs)
-    attr_accessor(:title, :url, :duration, :course_id)
+    attr_accessor(:title, :url, :desc, :duration, :course_id)
 
     def self.call(attrs = {})
       new(attrs)
@@ -13,7 +13,7 @@ module Episodes
       result
     end
 
-    validates :title, :url, :duration, :course_id, presence: true
+    validates :title, :url, :duration, :desc, :course_id, presence: true
     validates_associated :course
 
     private

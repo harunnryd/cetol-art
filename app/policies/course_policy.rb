@@ -7,14 +7,14 @@ class CoursePolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin?
+    user.admin? if user
   end
 
   def update?
-    user.admin? and user.id == course.user.id
+    user.admin? and user.id == course.user.id if user
   end
 
   def destroy?
-    user.admin? and user.id == course.user.id
+    user.admin? and user.id == course.user.id if user
   end
 end

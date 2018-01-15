@@ -25,6 +25,7 @@ module CetolArt
       "#{Rails.root}/app/validators",
       "#{Rails.root}/app/services",
       "#{Rails.root}/app/forms",
+      "#{Rails.root}/lib",
     ]
 
     config.generators do |g|

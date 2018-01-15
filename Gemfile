@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Use Carrierwave for handle attachment
+gem 'will_paginate', '~> 3.1.0'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick', '~> 4.3'
 gem 'materialize-sass'
