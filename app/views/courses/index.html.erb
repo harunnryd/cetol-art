@@ -1,4 +1,6 @@
-<%= render("layouts/button-new-fly", goto: new_course_path) %>
+<% if policy(@courses).new? %>
+  <%= render("layouts/button-new-fly", goto: new_course_path) %>
+<% end %>
 
 <div class="section container">
   <div class="row center">
