@@ -51,7 +51,7 @@ class EpisodesController < ApplicationController
 
   private
     def episode_params
-      params.require(:episode).permit(:title, :url, :duration, :course_id)
+      params.require(:episode).permit(:title, :url, :duration, :desc, :course_id)
     end
 
     def set_episode
